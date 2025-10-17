@@ -5,74 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SMKN 1 Surabaya - Sekolah Teknologi Unggulan</title>
 
-    <!-- Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Google Fonts: Poppins --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- Lucide Icons --><script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Swiper CSS --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-    <style>
-        /* Custom Styles & Animations */
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-        .text-gradient {
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-        .animate-fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .animate-fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .group:hover .group-hover-effect {
-            transform: translateY(-5px);
-        }
-        @keyframes chat-fade-in {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .chat-message-animation {
-            animation: chat-fade-in 0.4s ease-out forwards;
-        }
-        /* Custom styles for swiper navigation */
-        .swiper-button-prev, .swiper-button-next {
-            color: #DC2626 !important; /* Tailwind's red-600 */
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 9999px; /* Full rounded */
-            width: 44px; /* Default Swiper size */
-            height: 44px; /* Default Swiper size */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Shadow */
-        }
-        .swiper-button-prev:hover, .swiper-button-next:hover {
-            background-color: rgba(255, 255, 255, 1);
-        }
-        .swiper-button-prev::after, .swiper-button-next::after {
-            font-size: 1.5rem !important; /* Adjust icon size */
-            font-weight: bold;
-        }
-        .swiper-pagination-bullet-active {
-            background-color: #DC2626 !important; /* Tailwind's red-600 */
-        }
-    </style>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{{ asset('assets/welcome.css') }}">
 </head>
 <body class="bg-gray-50 text-gray-800">
 
@@ -80,11 +26,8 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <!-- Logo --><div class="flex-shrink-0">
-                    <a href="#home" class="flex items-center space-x-2">
-                        <svg class="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m-9-5.747h18"/>
-                        </svg>
-                        <span class="text-xl font-bold text-gray-900">SMKN 1 SBY</span>
+                    <a href="#home" class="flex items-center">
+                        <img src="{{ asset('assets/logo.webp') }}" alt="Logo SMKN 1 Surabaya" class="h-10 w-auto">
                     </a>
                 </div>
 
@@ -156,7 +99,7 @@
                         </div>
                     </div>
                     <div class="animate-fade-in" style="transition-delay: 200ms;">
-                        <img src="https://placehold.co/600x500/f87171/ffffff?text=Ilustrasi+Siswa+Modern" alt="Siswa SMKN 1 Surabaya" class="rounded-2xl shadow-2xl mx-auto">
+                        <img src="{{ asset('assets/siswa.webp') }}" alt="Ilustrasi siswa SMKN 1 Surabaya" class="rounded-2xl shadow-2xl mx-auto">
                     </div>
                 </div>
             </div>
@@ -166,18 +109,18 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid md:grid-cols-2 gap-12 items-center">
                     <div class="animate-fade-in">
-                        <img src="https://placehold.co/500x600/e2e8f0/334155?text=Foto+Kepala+Sekolah" alt="Kepala Sekolah SMKN 1 Surabaya" class="rounded-2xl shadow-xl mx-auto w-full max-w-sm">
+                        <img src="{{ asset('assets/kepalasekolah.webp') }}" alt="Foto Kepala Sekolah SMKN 1 Surabaya" class="rounded-2xl shadow-xl mx-auto w-full max-w-sm">
                     </div>
                     <div class="animate-fade-in" style="transition-delay: 200ms;">
                         <span class="text-red-600 font-semibold">SELAMAT DATANG</span>
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Sambutan dari Kepala Sekolah</h2>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Prakata dari Kepala Sekolah</h2>
                         <p class="mt-6 text-gray-600">
                             Assalamualaikum Warahmatullahi Wabarakatuh.
                             <br><br>
-                            Selamat datang di situs resmi SMKN 1 Surabaya. Kami bangga menjadi bagian dari perjalanan pendidikan anak bangsa, mempersiapkan mereka dengan keahlian teknologi terkini dan karakter yang kuat. Mari bersama-sama kita wujudkan masa depan cerah.
+                            Era globalisasi dengan segala implikasinya menjadi salah satu pemicu cepatnya perubahan yang terjadi pada berbagai aspek kehidupan masyarakat, dan bila tidak ada upaya sungguh-sungguh untuk mengantisipasinya maka hal tersebut akan menjadi maslah yang sangat serius. Dalam hal ini dunia pendidikan mempunyai tanggung jawab yang besar, terutama dalam menyiapkan sumber daya manusia yang tangguh sehingga mampu hidup selaras didalam perubahan itu sendiri. Pendidikan merupakan investasi jangka panjang yang hasilnya tidak dapat dilihat dan dirasakan secara instan, sehingga sekolah sebagai ujung tombak dilapangan harus memiliki arah pengembangan jangka panjang dengan tahapan pencapaiannya yang jelas dan tetap mengakomodir tuntutan permasalahan faktual kekinian yang ada di masyarakat.
                         </p>
                         <div class="mt-8">
-                            <h4 class="font-bold text-lg text-gray-900">Bpk. Dr. H. Ahmad Fauzi, M.Pd.</h4>
+                            <h4 class="font-bold text-lg text-gray-900">Dr. Drs. Anton Sujarwo, M. Pd.</h4>
                             <p class="text-gray-500">Kepala SMKN 1 Surabaya</p>
                         </div>
                     </div>
@@ -452,19 +395,19 @@
                 </div>
                 <div class="mt-12 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
                     <!-- Sponsor Logo 1 --><div class="animate-fade-in" style="transition-delay: 100ms;">
-                        <img src="https://placehold.co/200x100/e2e8f0/a0aec0?text=Sponsor+1" alt="Logo Sponsor 1" class="mx-auto grayscale hover:grayscale-0 transition-all duration-300">
+                        <img src="{{ asset('assets/garudaspark.webp') }}" alt="Logo Garudaspark" class="mx-auto grayscale hover:grayscale-0 transition-all duration-300">
                     </div>
                     <!-- Sponsor Logo 2 --><div class="animate-fade-in" style="transition-delay: 200ms;">
-                        <img src="https://placehold.co/200x100/e2e8f0/a0aec0?text=Sponsor+2" alt="Logo Sponsor 2" class="mx-auto grayscale hover:grayscale-0 transition-all duration-300">
+                        <img src="{{ asset('assets/jagoanhosting.webp') }}" alt="Logo Jagoan Hosting" class="mx-auto grayscale hover:grayscale-0 transition-all duration-300">
                     </div>
                     <!-- Sponsor Logo 3 --><div class="animate-fade-in" style="transition-delay: 300ms;">
-                        <img src="https://placehold.co/200x100/e2e8f0/a0aec0?text=Sponsor+3" alt="Logo Sponsor 3" class="mx-auto grayscale hover:grayscale-0 transition-all duration-300">
+                        <img src="{{ asset('assets/jhic.webp') }}" alt="Logo JHIC" class="mx-auto grayscale hover:grayscale-0 transition-all duration-300">
                     </div>
                     <!-- Sponsor Logo 4 --><div class="animate-fade-in" style="transition-delay: 400ms;">
-                        <img src="https://placehold.co/200x100/e2e8f0/a0aec0?text=Sponsor+4" alt="Logo Sponsor 4" class="mx-auto grayscale hover:grayscale-0 transition-all duration-300">
+                        <img src="{{ asset('assets/komdigi.webp') }}" alt="Logo Komdigi" class="mx-auto grayscale hover:grayscale-0 transition-all duration-300">
                     </div>
                     <!-- Sponsor Logo 5 --><div class="animate-fade-in" style="transition-delay: 500ms;">
-                        <img src="https://placehold.co/200x100/e2e8f0/a0aec0?text=Sponsor+5" alt="Logo Sponsor 5" class="mx-auto grayscale hover:grayscale-0 transition-all duration-300">
+                        <img src="{{ asset('assets/maspion.webp') }}" alt="Logo Maspion" class="mx-auto grayscale hover:grayscale-0 transition-all duration-300">
                     </div>
                 </div>
             </div>
@@ -496,7 +439,7 @@
                             </li>
                         </ul>
                          <div class="mt-6">
-                            <img src="https://placehold.co/600x300/e2e8f0/334155?text=Peta+Lokasi+Sekolah" class="rounded-lg shadow-md w-full object-cover h-48">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.4327480247885!2d112.73140327607737!3d-7.305182371821127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fb9ef4d7d9ed%3A0x5959ad479fd46d02!2sSMK%20Negeri%201%20Surabaya!5e0!3m2!1sid!2sid!4v1760690142549!5m2!1sid!2sid" class="w-full h-48 rounded-lg shadow-md" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                          </div>
                     </div>
                     <form class="space-y-4 animate-fade-in" style="transition-delay: 200ms;">
@@ -554,7 +497,7 @@
             <i data-lucide="message-circle" class="w-8 h-8"></i>
         </button>
 
-        <!-- Chat Window --><div id="chatbot-window" class="hidden absolute bottom-20 right-0 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col transition-all origin-bottom-right">
+        <!-- Chat Window --><div id="chatbot-window" class="hidden absolute bottom-20 right-0 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-gray-200 flex-col transition-all origin-bottom-right">
             <div class="bg-red-600 text-white p-4 rounded-t-2xl flex justify-between items-center">
                 <h3 class="font-bold text-lg">Asisten AI SMKN 1</h3>
                 <button id="chatbot-close" class="text-white opacity-80 hover:opacity-100">&times;</button>
@@ -577,195 +520,8 @@
         </div>
     </div>
 
-    <!-- Swiper JS --><script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Lucide Icons
-            lucide.createIcons();
-
-            // Mobile Menu Toggle
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-
-            // Close mobile menu when a link is clicked
-            document.querySelectorAll('#mobile-menu a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                });
-            });
-
-            // Fade-in animation on scroll
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.animate-fade-in').forEach(el => {
-                observer.observe(el);
-            });
-
-            // Swiper for Guru Section
-            const swiper = new Swiper(".mySwiper", {
-                slidesPerView: 1,
-                spaceBetween: 30,
-                loop: true,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
-                breakpoints: {
-                    640: { // sm
-                        slidesPerView: 2,
-                        spaceBetween: 20,
-                    },
-                    768: { // md
-                        slidesPerView: 3,
-                        spaceBetween: 30,
-                    },
-                    1024: { // lg
-                        slidesPerView: 4,
-                        spaceBetween: 30,
-                    },
-                },
-            });
-
-            // Chatbot Logic
-            const chatbotToggle = document.getElementById('chatbot-toggle');
-            const chatbotWindow = document.getElementById('chatbot-window');
-            const chatbotClose = document.getElementById('chatbot-close');
-            const chatbotForm = document.getElementById('chatbot-form');
-            const chatbotInput = document.getElementById('chatbot-input');
-            const chatbotMessages = document.getElementById('chatbot-messages');
-
-            chatbotToggle.addEventListener('click', () => {
-                chatbotWindow.classList.toggle('hidden');
-            });
-
-            chatbotClose.addEventListener('click', () => {
-                chatbotWindow.classList.add('hidden');
-            });
-
-            chatbotForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const userInput = chatbotInput.value.trim();
-                if (!userInput) return;
-
-                appendMessage(userInput, 'user');
-                chatbotInput.value = '';
-
-                showLoadingIndicator();
-
-                try {
-                    const botResponse = await getGeminiResponse(userInput);
-                    removeLoadingIndicator();
-                    appendMessage(botResponse, 'bot');
-                } catch (error) {
-                    removeLoadingIndicator();
-                    appendMessage('Maaf, terjadi kesalahan. Silakan coba lagi nanti.', 'bot');
-                    console.error("Error fetching Gemini response:", error);
-                }
-            });
-
-            function appendMessage(text, sender) {
-                const messageDiv = document.createElement('div');
-                messageDiv.classList.add('flex', 'mb-4', 'chat-message-animation');
-
-                const messageBubble = document.createElement('div');
-                messageBubble.textContent = text;
-
-                if (sender === 'user') {
-                    messageDiv.classList.add('justify-end');
-                    messageBubble.classList.add('bg-red-600', 'text-white', 'p-3', 'rounded-lg', 'rounded-br-none', 'max-w-xs');
-                } else {
-                    messageBubble.classList.add('bg-gray-200', 'text-gray-800', 'p-3', 'rounded-lg', 'rounded-bl-none', 'max-w-xs');
-                }
-
-                messageDiv.appendChild(messageBubble);
-                chatbotMessages.appendChild(messageDiv);
-                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-            }
-
-            function showLoadingIndicator() {
-                const loadingDiv = document.createElement('div');
-                loadingDiv.id = 'loading-indicator';
-                loadingDiv.classList.add('flex', 'mb-4');
-                loadingDiv.innerHTML = `
-                    <div class="bg-gray-200 text-gray-800 p-3 rounded-lg rounded-bl-none max-w-xs">
-                        <div class="flex items-center space-x-2">
-                            <div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style="animation-delay: -0.3s;"></div>
-                            <div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style="animation-delay: -0.15s;"></div>
-                            <div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div>
-                        </div>
-                    </div>
-                `;
-                chatbotMessages.appendChild(loadingDiv);
-                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-            }
-
-            function removeLoadingIndicator() {
-                const indicator = document.getElementById('loading-indicator');
-                if (indicator) {
-                    indicator.remove();
-                }
-            }
-
-            async function getGeminiResponse(userQuery) {
-                const apiKey = ""; // API Key akan disediakan oleh environment saat runtime
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-
-                const systemPrompt = `Anda adalah asisten AI yang ramah dan membantu untuk SMKN 1 Surabaya, sebuah sekolah menengah kejuruan teknologi di Surabaya, Indonesia. Tugas Anda adalah menjawab pertanyaan dari calon siswa, orang tua, atau siapa pun yang tertarik dengan sekolah. Berikan jawaban yang ringkas dan informatif dalam Bahasa Indonesia. Jika Anda tidak tahu jawabannya, katakan bahwa Anda tidak memiliki informasi tersebut dan sarankan untuk menghubungi sekolah langsung di (031) 8292021. Informasi kunci tentang sekolah:
-- Nama: SMKN 1 Surabaya
-- Lokasi: Jl. Smea No.4, Wonokromo, Surabaya, Jawa Timur 60243
-- Jurusan Unggulan: Rekayasa Perangkat Lunak (RPL), Teknik Komputer & Jaringan (TKJ), Multimedia & Desain Grafis, Teknik Elektronika Industri (TEI), Teknik Pemesinan, Teknik Otomotif, Teknik Bisnis Konstruksi & Properti (TBKP), Akuntansi & Keuangan Lembaga (AKL), dan Bisnis Daring & Pemasaran (BDPM).`;
-
-                const payload = {
-                    systemInstruction: {
-                        parts: [{ text: systemPrompt }]
-                    },
-                    contents: [{
-                        parts: [{ text: userQuery }]
-                    }]
-                };
-
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    throw new Error(`API request failed with status ${response.status}`);
-                }
-
-                const result = await response.json();
-                let text = result.candidates?.[0]?.content?.parts?.[0]?.text;
-
-                // Trim the response and check if it's empty
-                text = text ? text.trim() : null;
-
-                if (!text) {
-                     throw new Error("Invalid or empty response structure from API.");
-                }
-
-                return text;
-            }
-        });
-    </script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="{{ asset('assets/welcome.js') }}"></script>
 </body>
 </html>
-
-

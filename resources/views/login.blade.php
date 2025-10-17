@@ -39,11 +39,8 @@
 
     <div class="w-full max-w-md p-8 space-y-8 bg-white rounded-2xl shadow-xl form-container">
         <div class="text-center">
-            <a href="#" class="flex items-center justify-center space-x-2">
-                <svg class="h-10 w-10 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m-9-5.747h18"/>
-                </svg>
-                <span class="text-2xl font-bold text-gray-900">SMKN 1 SBY</span>
+            <a href="#" class="flex items-center justify-center">
+                <img src="{{ asset('assets/logo.webp') }}" alt="Logo SMKN 1 Surabaya" class="h-16 w-auto">
             </a>
             <h2 class="mt-6 text-2xl font-bold text-gray-900">
                 Selamat Datang, Admin
@@ -98,4 +95,3 @@
 
 </body>
 </html>
-
