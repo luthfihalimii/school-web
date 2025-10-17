@@ -31,11 +31,14 @@
                     </a>
                 </div>
 
-                <!-- Desktop Navigation --><nav class="hidden md:flex space-x-8">
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
                     <a href="#home" class="text-gray-600 hover:text-red-600 font-medium transition-colors">Home</a>
                     <a href="#sambutan" class="text-gray-600 hover:text-red-600 font-medium transition-colors">Profil</a>
                     <a href="#jurusan" class="text-gray-600 hover:text-red-600 font-medium transition-colors">Jurusan</a>
-                    <a href="#berita" class="text-gray-600 hover:text-red-600 font-medium transition-colors">Berita</a>
+                    <a href="{{ route('news.index') }}" class="text-gray-600 hover:text-red-600 font-medium transition-colors">Berita</a>
+                    <a href="{{ route('calendar') }}" class="text-gray-600 hover:text-red-600 font-medium transition-colors">Calendar</a>
+                    <a href="{{ route('gallery') }}" class="text-gray-600 hover:text-red-600 font-medium transition-colors">Gallery</a>
                     <a href="#kontak" class="text-gray-600 hover:text-red-600 font-medium transition-colors">Kontak</a>
                 </nav>
 
@@ -58,7 +61,9 @@
                 <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-red-600">Home</a>
                 <a href="#sambutan" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-red-600">Profil</a>
                 <a href="#jurusan" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-red-600">Jurusan</a>
-                <a href="#berita" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-red-600">Berita</a>
+                <a href="{{ route('news.index') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-red-600">Berita</a>
+                <a href="{{ route('calendar') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-red-600">Calendar</a>
+                <a href="{{ route('gallery') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-red-600">Gallery</a>
                 <a href="#kontak" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-red-600">Kontak</a>
             </nav>
         </div>
@@ -213,39 +218,28 @@
                     <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Ikuti perkembangan dan prestasi terbaru dari SMKN 1 Surabaya.</p>
                 </div>
                 <div class="mt-12 grid gap-8 lg:grid-cols-3">
-                    <!-- Blog Post 1 --><div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 animate-fade-in flex flex-col" style="transition-delay: 100ms;">
-                        <img class="w-full h-56 object-cover" src="https://placehold.co/600x400/fecaca/991b1b?text=Lomba+Coding" alt="Lomba Coding Nasional">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <div class="flex-grow">
-                                <span class="text-sm font-semibold text-red-600">Prestasi</span>
-                                <h3 class="mt-2 text-xl font-bold text-gray-900">Siswa SMKN 1 Surabaya Raih Juara 1 Lomba Coding Nasional</h3>
-                                <p class="mt-3 text-gray-600">Tim programming sekolah berhasil mengungguli puluhan peserta dari seluruh Indonesia.</p>
+                    @forelse ($latestNews ?? [] as $news)
+                        <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 animate-fade-in flex flex-col" style="transition-delay: {{ $loop->iteration * 100 }}ms;">
+                            <img class="w-full h-56 object-cover" src="{{ $news->image_url }}" alt="{{ $news->title }}">
+                            <div class="p-6 flex flex-col flex-grow">
+                                <div class="flex-grow">
+                                    @if ($news->category)
+                                        <span class="text-sm font-semibold text-red-600">{{ $news->category }}</span>
+                                    @endif
+                                    <h3 class="mt-2 text-xl font-bold text-gray-900">{{ $news->title }}</h3>
+                                    <p class="mt-3 text-gray-600 text-sm">{{ \Illuminate\Support\Str::limit($news->excerpt, 140) }}</p>
+                                </div>
+                                <div class="mt-4 flex items-center justify-between text-sm text-gray-500">
+                                    <span>{{ $news->display_date }}</span>
+                                    <a href="{{ route('news.show', $news->slug) }}" class="inline-block text-red-600 font-semibold hover:text-red-800">Baca Selengkapnya &rarr;</a>
+                                </div>
                             </div>
-                            <a href="#" class="mt-4 inline-block text-red-600 font-semibold hover:text-red-800">Baca Selengkapnya &rarr;</a>
                         </div>
-                    </div>
-                     <!-- Blog Post 2 --><div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 animate-fade-in flex flex-col" style="transition-delay: 200ms;">
-                        <img class="w-full h-56 object-cover" src="https://placehold.co/600x400/fecaca/991b1b?text=Kunjungan+Industri" alt="Kunjungan Industri">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <div class="flex-grow">
-                                <span class="text-sm font-semibold text-red-600">Kegiatan</span>
-                                <h3 class="mt-2 text-xl font-bold text-gray-900">Kunjungan Industri ke Perusahaan Teknologi Terkemuka</h3>
-                                <p class="mt-3 text-gray-600">Siswa jurusan RPL mendapatkan wawasan langsung dari para praktisi industri.</p>
-                            </div>
-                            <a href="#" class="mt-4 inline-block text-red-600 font-semibold hover:text-red-800">Baca Selengkapnya &rarr;</a>
+                    @empty
+                        <div class="lg:col-span-3 bg-white rounded-2xl shadow-lg p-8 text-center text-gray-600">
+                            Belum ada berita terbaru. Silakan kembali lagi nanti.
                         </div>
-                    </div>
-                     <!-- Blog Post 3 --><div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 animate-fade-in flex flex-col" style="transition-delay: 300ms;">
-                        <img class="w-full h-56 object-cover" src="https://placehold.co/600x400/fecaca/991b1b?text=Workshop+AI" alt="Workshop AI">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <div class="flex-grow">
-                                <span class="text-sm font-semibold text-red-600">Event</span>
-                                <h3 class="mt-2 text-xl font-bold text-gray-900">Workshop "Mengenal Artificial Intelligence" untuk Guru</h3>
-                                <p class="mt-3 text-gray-600">Peningkatan kompetensi guru dalam menghadapi tantangan teknologi masa depan.</p>
-                            </div>
-                            <a href="#" class="mt-4 inline-block text-red-600 font-semibold hover:text-red-800">Baca Selengkapnya &rarr;</a>
-                        </div>
-                    </div>
+                    @endforelse
                 </div>
             </div>
         </section>
@@ -318,66 +312,31 @@
                 <div class="mt-12 relative">
                     <!-- Swiper --><div class="swiper mySwiper">
                         <div class="swiper-wrapper pb-10">
-                            <!-- Guru Card 1 --><div class="swiper-slide animate-fade-in flex" style="transition-delay: 100ms;">
-                                <article class="bg-white p-8 rounded-2xl shadow-md w-full flex flex-col items-center text-center h-full min-h-[22rem]">
-                                    <img src="https://placehold.co/200x200/e2e8f0/334155?text=Bambang" class="w-32 h-32 rounded-full shadow-lg object-cover">
-                                    <div class="mt-6 space-y-1">
-                                        <h4 class="font-bold text-lg text-gray-900">Bambang S., S.Kom</h4>
-                                        <p class="text-red-600 font-medium">Guru RPL</p>
-                                    </div>
-                                    <p class="mt-auto pt-6 text-gray-600 text-sm leading-relaxed max-w-xs">Ahli dalam pengembangan web modern.</p>
-                                </article>
-                            </div>
-                            <!-- Guru Card 2 --><div class="swiper-slide animate-fade-in flex" style="transition-delay: 200ms;">
-                                <article class="bg-white p-8 rounded-2xl shadow-md w-full flex flex-col items-center text-center h-full min-h-[22rem]">
-                                    <img src="https://placehold.co/200x200/e2e8f0/334155?text=Endah" class="w-32 h-32 rounded-full shadow-lg object-cover">
-                                    <div class="mt-6 space-y-1">
-                                        <h4 class="font-bold text-lg text-gray-900">Endah W., M.T.</h4>
-                                        <p class="text-red-600 font-medium">Guru TKJ</p>
-                                    </div>
-                                    <p class="mt-auto pt-6 text-gray-600 text-sm leading-relaxed max-w-xs">Pakar keamanan jaringan, server, dan juga sering mengikuti lomba-lomba tingkat nasional.</p>
-                                </article>
-                            </div>
-                            <!-- Guru Card 3 --><div class="swiper-slide animate-fade-in flex" style="transition-delay: 300ms;">
-                                <article class="bg-white p-8 rounded-2xl shadow-md w-full flex flex-col items-center text-center h-full min-h-[22rem]">
-                                    <img src="https://placehold.co/200x200/e2e8f0/334155?text=Citra" class="w-32 h-32 rounded-full shadow-lg object-cover">
-                                    <div class="mt-6 space-y-1">
-                                        <h4 class="font-bold text-lg text-gray-900">Citra Lestari, S.Ds</h4>
-                                        <p class="text-red-600 font-medium">Guru Multimedia</p>
-                                    </div>
-                                    <p class="mt-auto pt-6 text-gray-600 text-sm leading-relaxed max-w-xs">Kreator konten digital dan animasi.</p>
-                                </article>
-                            </div>
-                            <!-- Guru Card 4 --><div class="swiper-slide animate-fade-in flex" style="transition-delay: 400ms;">
-                                <article class="bg-white p-8 rounded-2xl shadow-md w-full flex flex-col items-center text-center h-full min-h-[22rem]">
-                                    <img src="https://placehold.co/200x200/e2e8f0/334155?text=Rizky" class="w-32 h-32 rounded-full shadow-lg object-cover">
-                                    <div class="mt-6 space-y-1">
-                                        <h4 class="font-bold text-lg text-gray-900">Rizky Pratama, S.Pd</h4>
-                                        <p class="text-red-600 font-medium">Guru Produktif</p>
-                                    </div>
-                                    <p class="mt-auto pt-6 text-gray-600 text-sm leading-relaxed max-w-xs">Fokus pada inovasi dan kewirausahaan.</p>
-                                </article>
-                            </div>
-                             <!-- Guru Card 5 --><div class="swiper-slide animate-fade-in flex" style="transition-delay: 500ms;">
-                                <article class="bg-white p-8 rounded-2xl shadow-md w-full flex flex-col items-center text-center h-full min-h-[22rem]">
-                                    <img src="https://placehold.co/200x200/e2e8f0/334155?text=Dewi" class="w-32 h-32 rounded-full shadow-lg object-cover">
-                                    <div class="mt-6 space-y-1">
-                                        <h4 class="font-bold text-lg text-gray-900">Dewi Anggraini, S.T.</h4>
-                                        <p class="text-red-600 font-medium">Guru TEI</p>
-                                    </div>
-                                    <p class="mt-auto pt-6 text-gray-600 text-sm leading-relaxed max-w-xs">Spesialisasi di bidang elektronika industri.</p>
-                                </article>
-                            </div>
-                            <!-- Guru Card 6 --><div class="swiper-slide animate-fade-in flex" style="transition-delay: 600ms;">
-                                <article class="bg-white p-8 rounded-2xl shadow-md w-full flex flex-col items-center text-center h-full min-h-[22rem]">
-                                    <img src="https://placehold.co/200x200/e2e8f0/334155?text=Joko" class="w-32 h-32 rounded-full shadow-lg object-cover">
-                                    <div class="mt-6 space-y-1">
-                                        <h4 class="font-bold text-lg text-gray-900">Joko Santoso, S.Pd</h4>
-                                        <p class="text-red-600 font-medium">Guru Otomotif</p>
-                                    </div>
-                                    <p class="mt-auto pt-6 text-gray-600 text-sm leading-relaxed max-w-xs">Pakar di bidang perbaikan kendaraan.</p>
-                                </article>
-                            </div>
+                            @forelse (($teachers ?? collect()) as $teacher)
+                                <div class="swiper-slide animate-fade-in flex" style="transition-delay: {{ $loop->iteration * 100 }}ms;">
+                                    <article class="bg-white p-8 rounded-2xl shadow-md w-full flex flex-col items-center text-center h-full min-h-[22rem]">
+                                        <img src="{{ $teacher->photo_url }}" alt="{{ $teacher->name }}" class="w-32 h-32 rounded-full shadow-lg object-cover">
+                                        <div class="mt-6 space-y-1">
+                                            <h4 class="font-bold text-lg text-gray-900">{{ $teacher->name }}</h4>
+                                            <p class="text-red-600 font-medium">{{ $teacher->position }}</p>
+                                        </div>
+                                        <p class="mt-auto pt-6 text-gray-600 text-sm leading-relaxed max-w-xs">
+                                            {{ $teacher->bio ? \Illuminate\Support\Str::limit($teacher->bio, 140) : 'Pengajar berpengalaman yang siap membimbing siswa meraih prestasi.' }}
+                                        </p>
+                                    </article>
+                                </div>
+                            @empty
+                                <div class="swiper-slide animate-fade-in flex">
+                                    <article class="bg-white p-8 rounded-2xl shadow-md w-full flex flex-col items-center text-center h-full min-h-[22rem]">
+                                        <img src="https://placehold.co/200x200/fecaca/991b1b?text=Guru" alt="Placeholder Guru" class="w-32 h-32 rounded-full shadow-lg object-cover">
+                                        <div class="mt-6 space-y-1">
+                                            <h4 class="font-bold text-lg text-gray-900">Data Guru Belum Tersedia</h4>
+                                            <p class="text-red-600 font-medium">Segera Hadir</p>
+                                        </div>
+                                        <p class="mt-auto pt-6 text-gray-600 text-sm leading-relaxed max-w-xs">Admin dapat menambahkan profil guru melalui dashboard untuk menampilkan informasi di sini.</p>
+                                    </article>
+                                </div>
+                            @endforelse
                         </div>
                         <!-- Add Pagination --><div class="swiper-pagination"></div>
                         <!-- Add Navigation --><div class="swiper-button-next"></div>
@@ -474,7 +433,9 @@
                     <ul class="mt-2 space-y-1">
                         <li><a href="#sambutan" class="text-gray-400 hover:text-white">Profil Sekolah</a></li>
                         <li><a href="#jurusan" class="text-gray-400 hover:text-white">Jurusan</a></li>
-                        <li><a href="#berita" class="text-gray-400 hover:text-white">Berita</a></li>
+                        <li><a href="{{ route('news.index') }}" class="text-gray-400 hover:text-white">Berita</a></li>
+                        <li><a href="{{ route('calendar') }}" class="text-gray-400 hover:text-white">Calendar</a></li>
+                        <li><a href="{{ route('gallery') }}" class="text-gray-400 hover:text-white">Gallery</a></li>
                     </ul>
                 </div>
                  <div>
